@@ -1,13 +1,13 @@
-package org.anudip.hotelManegment;
+package org.anudip.hotelManagement;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class HotelManegmentApplication {
+public class HotelManagementApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(HotelManegmentApplication.class, args);
+		SpringApplication.run(HotelManagementApplication.class, args);
 	}
 
 }

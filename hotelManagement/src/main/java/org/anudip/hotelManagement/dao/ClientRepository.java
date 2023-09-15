@@ -1,6 +1,6 @@
-package org.anudip.hotelManegment.dao;
+package org.anudip.hotelManagement.dao;
 
-import org.anudip.hotelManegment.bean.Client;
+import org.anudip.hotelManagement.bean.Client;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 

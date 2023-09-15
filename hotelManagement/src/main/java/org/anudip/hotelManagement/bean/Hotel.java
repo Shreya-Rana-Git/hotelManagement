@@ -1,4 +1,4 @@
-package org.anudip.hotelManegment.bean;
+package org.anudip.hotelManagement.bean;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
