@@ -36,7 +36,7 @@ public class ClientServicesDaoImpl implements ClientServicesDao {
 
 	@Override
 	public List<ClientServices> clientServicesByClientNumber(Integer clientNumber) {
-		return null;
+		return repository.getClientServicesByClientNumber(clientNumber);
 	}
 
 }

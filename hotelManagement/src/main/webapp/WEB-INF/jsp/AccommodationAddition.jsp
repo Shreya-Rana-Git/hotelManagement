@@ -9,18 +9,21 @@
 </head>
 <body>
 <div align="center">
-<form:form action="/hotel-save"  method="post"  modelAttribute="hotelrecords">
+<form:form action="/accommodation-save"  method="post"  modelAttribute="accommodationRecord">
 <h2>
 			
-			Hotel Id :<form:input type="text" path="hotelId" readonly="readOnly"/>
+			Accommodation Id :<form:input type="text" path="accommodationId" required="required"/>
 			<br/><br/>
-			Hotel Place:<form:input type="text" path="hotelName" required="required"/>
+			Accommodation Type:<form:input type="text" path="accommodationType" required="required"/>
+			<br/><br/>
+			Fare Per Day:<form:input type="text" path="farePerDay" required="required"/>
 			<br/><br/>
 			
 		</h2>
-	
 		<button type="submit">Submit</button>
 </form:form>
 </div>
+
+
 </body>
 </html>

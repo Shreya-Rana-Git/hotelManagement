@@ -8,8 +8,13 @@
 <title>Insert title here</title>
 </head>
 <body>
+<h3>
+<div align="right">
+<form method="post" action="/hotel-find">
+Find the hotel by id:<input type="text" name="hotelid" required="required"/><button type="submit">Find</button>
+</form></div>
 <div align="center">
-	<table>
+	<table border="" style="border-spacing: 0px;">
 		<tr>
 			<th>Hotel Id</th>
 			<th>Hotel Name</th>
@@ -22,10 +27,10 @@
 		</c:forEach>
 	</table>
 	<br/>
-
-	<a href="/">Return</a>
+	<a href="/hotel-add">Add</a>&nbsp;
+	<a href="/index">Return</a>
 </div>
 
-
+</h3>
 </body>
 </html>

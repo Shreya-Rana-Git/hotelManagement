@@ -7,8 +7,9 @@
 <title>Insert title here</title>
 </head>
 <body>
+<h1>
 <a href="/hotel-index">Hotel</a>&nbsp;&nbsp;
 <a href="/client-index">Client</a>
-
+</h1>
 </body>
 </html>
