@@ -11,21 +11,26 @@ import org.springframework.stereotype.Service;
 public class ClientDaoImpl implements ClientDao{
 	@Autowired
 	private ClientRepository repository;
+	
+	// to save record in the database
 	@Override
 	public void save(Client client) {
 		repository.save(client);
 	}
 
+	//to get all client records
 	@Override
 	public List<Client> getAllClientRecords() {
 		return repository.findAll();
 	}
 
+	//to get single client record
 	@Override
 	public Client getClientById(Integer id) {
 		return repository.findById(id).get();
 	}
 
+	//to generate new client id
 	@Override
 	public Integer generateId() {
 		Integer id = repository.getLastClientNumber();

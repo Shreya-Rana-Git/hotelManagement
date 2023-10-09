@@ -19,6 +19,8 @@ public class Client {
 		private String checkoutDate;
 		private String accommodationId;
 		private String payStatus;
+		
+	// Constructors
 		public Client() {
 			super();
 			// TODO Auto-generated constructor stub
@@ -41,6 +43,8 @@ public class Client {
 			this.accommodationId = accommodationId;
 			this.payStatus = payStatus;
 		}
+		
+	// Getter and Setter Methods
 		public Integer getClientNumber() {
 			return clientNumber;
 		}

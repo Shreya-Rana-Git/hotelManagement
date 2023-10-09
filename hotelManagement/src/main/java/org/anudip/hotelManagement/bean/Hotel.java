@@ -11,6 +11,8 @@ public class Hotel {
 		@Id
 		private String hotelId;
 		private String hotelName;
+	
+	//constructors
 		public Hotel() {
 			super();
 			// TODO Auto-generated constructor stub
@@ -24,6 +26,8 @@ public class Hotel {
 			this.hotelId = hotelId;
 			this.hotelName = hotelName;
 		}
+		
+	//getter and setter methods
 		public String getHotelId() {
 			return hotelId;
 		}

@@ -12,16 +12,19 @@ public class AccommodationDaoImpl implements AccommodationDao {
 	@Autowired
 	private AccommodationRepository repository;
 
+	//method for saving accommodation records
 	@Override
 	public void save(Accommodation accommodation) {
 		repository.save(accommodation);
 	}
 
+	//for getting all accommodation records
 	@Override
 	public List<Accommodation> getAllAccommodationRecords() {
 		return repository.findAll();
 	}
 
+	//for getting single record
 	@Override
 	public Accommodation getAccommodationById(String id) {
 		return repository.findById(id).get();

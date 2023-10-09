@@ -11,17 +11,20 @@ import org.springframework.stereotype.Service;
 public class ClientServicesDaoImpl implements ClientServicesDao {
 	@Autowired
 	private ClientServicesRepository repository;
+	
+	// to save ClientService records in the database
 	@Override
 	public void save(ClientServices clientService) {
 		repository.save(clientService);
-
 	}
 
+	//to get all client service records
 	@Override
 	public List<ClientServices> allClientServiceRecords() {
 		return repository.findAll();
 	}
 
+	//to generate new serial number
 	@Override
 	public Integer generateSerialNumber() {
 		Integer  id = repository.getLastSerialNumber();

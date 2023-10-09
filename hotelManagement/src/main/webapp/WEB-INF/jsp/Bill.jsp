@@ -6,14 +6,21 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
+
+<!-- Bootstrap cdn -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+
 <title>Insert title here</title>
 <style type="text/css">
 u{
 text-decoration-style: dotted;
 }
+/*
 table, th {
   border: 1px solid black;
- /* border-collapse: collapse;*/
+ border-collapse: collapse;
 }
 
 td{
@@ -30,32 +37,41 @@ table td:first-child {
 
 table td:last-child {
     border-right: none;
+}*/
+div{
+font-size: 20px;
 }
 </style>
 </head>
 <body>
-<div align="center">
+<!-- Bill Page -->
+<div align="center" class="container">
+<!-- heading -->
 	<h1>Bill</h1>
 </div>
-<div align="center">
+<div align="center" >
 	<h2>Hotel ${hotel.hotelName}</h2>
-	<div>
-	Contact details:1126463555/114866644/656556755
-	</div>
 	<br/><br/>
 	<div>
-	
+	<!-- client details -->
 	Client Name:<u>${client.clientName}</u> <br/><br/>
 	ContactNo:<u>${client.contactNo}</u> <br/><br/>
 	</div>
-	<div>
-	<table  style="border-spacing: 0px;" cellpadding="20px">
-	<tr>
+	
+	
+	<div style="margin-left: 500px;
+	margin-right: 500px;">
+	<!-- table containing amount details -->
+	<table  style="border-spacing: 0px;" cellpadding="20px" class="table">
+	<!-- table head -->
+	<tr class="table-primary">
 	<th>Services</th>
 	<th>Amount</th>
 	</tr>
+
+	<!-- table body -->
 	<tr>
-	<td>${accommodation.accommodationType}</td>
+	<td>Accommodation: ${accommodation.accommodationType}</td>
 	<td>${accommodation.farePerDay}</td>
 	</tr>
 	
@@ -69,6 +85,9 @@ table td:last-child {
 	</table><br/>
 	Total : <u>${total}</u>
 	</div>
+	<br/><br/>
+	<!-- link to return -->
+		<a href="/index" class="btn" style="background-color: Tan;color: white;">Return</a>
 	
 </div>
 

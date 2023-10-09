@@ -6,24 +6,36 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
+<!-- Bootstrap cdn -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
 </head>
 <body>
-<div align="center">
-<h4>
-	<table border="" style="border-spacing: 0px;">
+<body>
+<div align="center" class="container">
+<!-- heading -->
+<h1><u>Single Hotel List</u></h1>
+
+<!-- table to display single client record -->
+
+	<table border="" style="border-spacing: 0px;" class="table table-hover">
 	
-		<tr>
+	<!-- table head -->
+		<tr class="table-primary">
 			<th>hotelId</th>
 			<th>hotelName</th>
 		</tr>
+		
+		<!-- table body -->
 		<tr>
 			<td>${HotelDetails.hotelId}</td>
 			<td>${HotelDetails.hotelName}</td>
 		</tr>
 	</table>
-	</h4>
 	<br/>
-	<a href="/">Return</a>
+	<!-- link to return -->
+	<a href="/index" class="btn" style="background-color: Tan;color: white;">Return</a>
 </div>
 
 

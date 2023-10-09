@@ -25,13 +25,23 @@ import org.springframework.web.servlet.ModelAndView;
 @ControllerAdvice
 @RestController
 public class HotelController {
+	
+	//properties of HotelController class
 	@Autowired
 	private ClientService service;
 	@Autowired
 	private HotelDao hotelDao;
 	@Autowired
 	private AccommodationDao accommodationDao;
+	private String accId;
+	@Autowired
+	private ClientServicesDao clientServicesDao;
+	private Integer clientIdToFindClientService;
+	@Autowired
+	private ClientDao clientDao;
+	private Integer clientidToFindAndUpdate;
 	
+	//loads the index page
 	@GetMapping("/index")
 	public ModelAndView showIndexPage() {
 		return new ModelAndView("index");
@@ -43,11 +53,8 @@ public class HotelController {
 	 * For  Hotel
 	 * 
 	 */
-	@GetMapping("/hotel-index")
-	public ModelAndView showHotelIndexPage() {
-		return new ModelAndView("HotelIndex");
-	}
 	
+	//loads the HotelAddition page 
 	@GetMapping("/hotel-add")
 	public ModelAndView showHotelAddPage() {
 		ModelAndView mv = new ModelAndView("HotelAddition");
@@ -57,6 +64,7 @@ public class HotelController {
 		return mv;
 	}
 	
+	//saves the Hotel records in the database
 	@PostMapping("/hotel-save")
 	public ModelAndView saveHotelRecords(@ModelAttribute("hotelrecords") Hotel hotel) {
 		hotelDao.save(hotel);
@@ -64,6 +72,7 @@ public class HotelController {
 		
 	}
 	
+	//loads the DisplayAllHotels page and show all records
 	@GetMapping("/hotel-view")
 	public ModelAndView showDisplayAllHotelsPage() {
 		ModelAndView mv = new ModelAndView("DisplayAllHotels");
@@ -71,6 +80,8 @@ public class HotelController {
 		mv.addObject("hotellist", hotellist);
 		return mv;
 	}
+	
+	// loads the DisplaySingleHotel page with the single record after finding the record
 	@PostMapping("/hotel-find")
 	public ModelAndView showDisplaySingleHotelsPage(@RequestParam("hotelid") String hotelid) {
 		ModelAndView mv = new ModelAndView("DisplaySingleHotel");
@@ -86,8 +97,8 @@ public class HotelController {
 	 * 
 	 */
 	
-	private String accId;
 	
+	//loads the AccommodationAddition Page
 	@GetMapping("/accommodation-add")
 	public ModelAndView showAccommodationAdditonPage() {
 		ModelAndView mv = new ModelAndView("AccommodationAddition");
@@ -97,12 +108,14 @@ public class HotelController {
 
 	}
 	
+	//saves the newly entered accommodation records
 	@PostMapping("/accommodation-save")
 	public ModelAndView saveStudentRecord(@ModelAttribute("accommodationRecord") Accommodation accommodation) {
 		accommodationDao.save(accommodation);
 		return new ModelAndView("redirect:/accommodation-view");
 	}
 	
+	//loads the DisplayAllAccommodations Page and display all accommodation records
 	@GetMapping("/accommodation-view")
 	public ModelAndView showDisplayAllAccommodationsPage() {
 		ModelAndView mv = new ModelAndView("DisplayAllAccommodations");
@@ -110,6 +123,8 @@ public class HotelController {
 		mv.addObject("accommodationlist", accommodationlist);
 		return mv;
 	}
+	
+	//loads the DisplaySingleAccommodation page and display the single record after finding the record
 	@PostMapping("/accommodation-find")
 	public ModelAndView showDisplaySingleAccommodationPage(@RequestParam("accommodationid") String accommodationid) {
 		accId = accommodationid;
@@ -118,6 +133,8 @@ public class HotelController {
 		mv.addObject("accommodation", accommodation);
 		return mv;
 	}
+	
+	//loads the AccommodationUpdate page
 	@GetMapping("/accommodation-update")
 	public ModelAndView showAccommodationUpdatePage() {
 		ModelAndView mv = new ModelAndView("AccommodationUpdate");
@@ -130,16 +147,9 @@ public class HotelController {
 	 *  for client
 	 * 
 	 */
-	@Autowired
-	private ClientDao clientDao;
 	
-	private Integer clientidToFindAndUpdate;
 	
-	@GetMapping("/client-index")
-	public ModelAndView showClientIndexPage() {
-		return new ModelAndView("ClientIndex");
-	}
-	
+	//loads the ClientAddition Page
 	@GetMapping("/client-addition")
 	public ModelAndView showClientAdditionPage() {
 		ModelAndView mv = new ModelAndView("ClientAddition");
@@ -155,11 +165,14 @@ public class HotelController {
 	}
 	
 	
+	//save the newly entered client records
 	@PostMapping("/client-save")
 	public ModelAndView saveClientRecord(@ModelAttribute("clientDetails") Client client) {
 		clientDao.save(client);
 		return new ModelAndView("redirect:/client-view");
 	}
+	
+	//loads the DisplayAllClientRecords page and display all the client records
 	@GetMapping("/client-view")
 	public ModelAndView showDisplayClientRecordPage() {
 		ModelAndView mv = new ModelAndView("DisplayAllClientRecords");
@@ -167,6 +180,8 @@ public class HotelController {
 		mv.addObject("clientlist", clientlist);
 		return mv;
 	}
+	
+	//loads the DisplaySingleClient page and display the single record after finding the record 
 	@PostMapping("/client-find")
 	public ModelAndView showDisplaySingleClientPage(@RequestParam("clientid") Integer clientid) {
 		clientidToFindAndUpdate = clientid;
@@ -179,6 +194,8 @@ public class HotelController {
 		
 		return mv;
 	}
+	
+	//loads the ClientUpdate page
 	@GetMapping("/client-update")
 	public ModelAndView showClientUpdatePage() {
 		ModelAndView mv = new ModelAndView("ClientUpdate");
@@ -195,25 +212,28 @@ public class HotelController {
 	 * For  Client Service
 	 * 
 	 */
-	@Autowired
-	private ClientServicesDao clientServicesDao;
 	
-	private Integer clientIdToFindClientService;
 	
+	//loads the ClientServiceAddition page
 	@GetMapping("/client-service-addition")
 	public ModelAndView showClientServiceAdditionPage() {
 		ModelAndView mv = new ModelAndView("ClientServiceAddition");
 		Integer id =clientServicesDao.generateSerialNumber();
 		ClientServices clientServices = new ClientServices(id);
+		List<Client> clientlist = clientDao.getAllClientRecords();
+		mv.addObject("clientList", clientlist);
 		mv.addObject("clientserviceDetails", clientServices);
 		return mv;
 	}
 	
+	//saves the newly entered client service record 
 	@PostMapping("/client-service-save")
 	public ModelAndView saveClientServiceRecord(@ModelAttribute("clientserviceDetails") ClientServices clientServices) {
 		clientServicesDao.save(clientServices);
 		return new ModelAndView("redirect:/client-service-view");
 	}
+	
+	//loads the DisplayAllClientServiceRecords page and display all the records 
 	@GetMapping("/client-service-view")
 	public ModelAndView showDisplayClientServiceRecordPage() {
 		ModelAndView mv = new ModelAndView("DisplayAllClientServicesRecords");
@@ -221,6 +241,8 @@ public class HotelController {
 		mv.addObject("clientservicelist", clientservicelist);
 		return mv;
 	}
+	
+	//loads the DisplayClientServiceOfSingleClient page and display the records after finding
 	@PostMapping("/client-service-find")
 	public ModelAndView showDisplaySingleClientServicePage(@RequestParam("clientid") Integer clientid) {
 		clientIdToFindClientService = clientid;
@@ -238,6 +260,8 @@ public class HotelController {
 	 * 
 	 * 
 	 */
+	
+	//loads the Bill page and display the created bill
 	@PostMapping("/bill")
 	public ModelAndView showBillPage(@RequestParam("clno") Integer clid) {
 		ModelAndView mv =new ModelAndView("Bill");
@@ -261,7 +285,13 @@ public class HotelController {
 		return mv;
 		
 	}
+	/*
+	 * 
+	 * Exception
+	 * 
+	 */
 	
+	//checks whether the value of paystatus is paid or not . If paid then it display the exception
 	@ExceptionHandler(value=PayStatusException.class)
 	public ModelAndView showPayStatusErrorPasge() {
 		ModelAndView mv = new ModelAndView("PayStatusErrorPage");
@@ -270,6 +300,7 @@ public class HotelController {
 		   return mv;
 	}
 
+	//checks that the client id is present or not . if not present then the error message will be displayed
 	@ExceptionHandler(value=NoSuchElementException.class)
 	public ModelAndView showClientErrorPasge() {
 		ModelAndView mv = new ModelAndView("ClientError");

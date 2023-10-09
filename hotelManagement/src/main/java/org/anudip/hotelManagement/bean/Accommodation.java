@@ -10,7 +10,7 @@ public class Accommodation {
 		private String accommodationId;
 		private String accommodationType;
 		private Double farePerDay;
-		
+	// Constructors
 		public Accommodation() {
 			super();
 			// TODO Auto-generated constructor stub
@@ -22,7 +22,7 @@ public class Accommodation {
 			this.accommodationType = accommodationType;
 			this.farePerDay = farePerDay;
 		}
-
+	//Getter and Setter Methods
 		public String getAccommodationId() {
 			return accommodationId;
 		}
