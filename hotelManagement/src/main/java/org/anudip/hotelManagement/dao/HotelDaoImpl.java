@@ -1,8 +1,6 @@
 package org.anudip.hotelManagement.dao;
 
 import java.util.List;
-import java.util.TreeSet;
-
 import org.anudip.hotelManagement.bean.Hotel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
